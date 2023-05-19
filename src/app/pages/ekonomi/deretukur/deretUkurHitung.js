@@ -2,17 +2,48 @@
 import React, { useState } from 'react'
 
 export default function DeretUkurHitung() {
-    const [Sn, setSn] = useState('')
-    const [sukuPertama, setSukuPertama] = useState('a')
-    const [pembeda, setPembeda] = useState('b')
-    const [indexSuku, setIndexSuku] = useState('n')
+    const [Sn, setSn] = useState('?')
+    const [sukuPertama, setSukuPertama] = useState()
+    const [pembeda, setPembeda] = useState()
+    const [indexSuku, setIndexSuku] = useState()
     const [hitung, setHitung] = useState(false)
+    const [warnig, setWarning] = useState()
+    const [moduleHidden, setModuleHidden] = useState(false)
     const totalTo = Number(sukuPertama)
     const total = totalTo + ((indexSuku - 1) * (pembeda))
+    function hitungRumus(isi){
+        if(isi === 'hitung' && sukuPertama != '' && pembeda != '' && indexSuku != '') {
+            setHitung(true)
+        }if(isi != 'hitung') {
+            setIndexSuku()
+            setPembeda()
+            setSukuPertama()
+            setHitung(false)
+        } 
+        else{
+            if(sukuPertama === '' && pembeda === '' && indexSuku === '' || Number.isNaN(sukuPertama) && Number.isNaN(pembeda) && Number.isNaN(indexSuku)) {
+                
+                setModuleHidden(true)
+            }
+        }
+    }
+    function closeModule() {
+        setModuleHidden(false)
+    }
   return (
     <div>
         <div className="contHitung mt-5">
+        
             <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
+            <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
+                <div className='box-warning deretHitung-warning'>
+                    <div className="box">
+                        <h1 className='text-center font-bold'>Ada yang belum di isi!!!</h1>
+                        <h3 className='text-center font-normal text-sm'>Masih ada yang kosong<br/>pada bagian di ketahuinya<br/>tapi selain Sn</h3>
+                        <button className='btnBrand text-center' onClick={closeModule}>Yoi</button>
+                    </div>
+                </div>
+            </div>
             <div className="input-deretHtg flex justify-center items-center flex-col">
                 <div className="flex gap-2 justify-center items-center my-4">
                 <label htmlFor="Rumus">Pilih rumus</label>
@@ -60,33 +91,35 @@ export default function DeretUkurHitung() {
                                         Jawabannya : 
                                     </th>
                                 </tr>
-                                <tr>
-                                    <td>S<span>{indexSuku}</span></td>
-                                    <td>=</td>
-                                    <td>{sukuPertama} + {`(${(indexSuku)}-1)`} {pembeda} </td>
-                                </tr>
-                                <tr>
-                                    <td>S<span>{indexSuku}</span></td>
-                                    <td>=</td>
-                                    <td>{sukuPertama} + {`(${(indexSuku-1)})`} {pembeda}</td>
-                                </tr>
-                                <tr>
-                                    <td>S<span>{indexSuku}</span></td>
-                                    <td>=</td>
-                                    <td>{sukuPertama} + {`${(indexSuku-1)*pembeda}`}</td>
-                                </tr>
-                                <tr>
-                                    <td>S<span>{indexSuku}</span></td>
-                                    <td>=</td>
-                                    <td>{Number(sukuPertama) + ((indexSuku-1)*pembeda)}</td>
-                                </tr>
+                                <div className={hitung ? 'block' : 'hidden'}>
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{sukuPertama} + {`(${(indexSuku)}-1)`} {pembeda} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{sukuPertama} + {`(${(indexSuku-1)})`} {pembeda}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{sukuPertama} + {`${(indexSuku-1)*pembeda}`}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{Number(sukuPertama) + ((indexSuku-1)*pembeda)} </td>
+                                    </tr>
+                                </div>
                         </table>
 
                 </div>
             </div>
             <div className='flex items-center justify-center gap-6'>
-                <button>hitung</button>
-                <button>bersihkan</button>
+                <button className='btnBrand' onClick={() => hitungRumus('hitung')}>hitung</button>
+                <button className='btnBrand' onClick={() => hitungRumus('hapus')}>bersihkan</button>
             </div>
         </div>
     
