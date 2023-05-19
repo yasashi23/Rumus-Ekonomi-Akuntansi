@@ -7,29 +7,45 @@ export default function DeretUkurHitung() {
     const [pembeda, setPembeda] = useState()
     const [indexSuku, setIndexSuku] = useState()
     const [hitung, setHitung] = useState(false)
-    const [warnig, setWarning] = useState()
+    const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
-    const totalTo = Number(sukuPertama)
-    const total = totalTo + ((indexSuku - 1) * (pembeda))
-    function hitungRumus(isi){
-        if(isi === 'hitung' && !Number.isNaN(sukuPertama) && !Number.isNaN(pembeda) && !Number.isNaN(indexSuku) && moduleHidden === false) {
-            setHitung(true)
-        }if(isi != 'hitung' && !Number.isNaN(sukuPertama) && !Number.isNaN(pembeda) && !Number.isNaN(indexSuku)) {
-            setIndexSuku('')
-            setPembeda('')
-            setSukuPertama('')
-            setHitung(false)
-        } 
-        else{
-            if(sukuPertama === '' || pembeda === '' || indexSuku === '' || !Number.isNaN(sukuPertama) || !Number.isNaN(pembeda) || !Number.isNaN(indexSuku) || Number.isNaN(sukuPertama) || Number.isNaN(pembeda) || Number.isNaN(indexSuku)) {
+    console.log(typeof sukuPertama != 'string' && typeof pembeda != 'string' && typeof indexSuku != 'string' )
+    console.log(typeof sukuPertama)
+
+    // check if string there is no numbe 
+    function checkStringNumber(s){
+        const result = /\D/.test(s)
+        return result
+    }
+
+    function hitungRumus(){
+
+            if(typeof sukuPertama != 'undefined' && typeof pembeda != 'undefined' && typeof indexSuku != 'undefined' && !checkStringNumber(sukuPertama) && !checkStringNumber(pembeda) && !checkStringNumber(indexSuku)){
+                setHitung(true)
+                console.log('hitung')
+                console.log(Number.isNaN(pembeda))
+                setRemove(false)
+            }
+             else{
                 setHitung(false) 
                 setModuleHidden(true)
+                console.log(typeof indexSuku)
+                console.log('else hitung')
             }
-        }
+       
+    }
+    function hapusInputan() {
+        setIndexSuku(undefined)
+        setPembeda(undefined)
+        setSukuPertama(undefined)
+        setHitung(false)
+        setRemove(true)
+
     }
     function closeModule() {
         setModuleHidden(false)
     }
+    console.log(indexSuku)
   return (
     <div>
         <div className="contHitung mt-5">
@@ -72,17 +88,17 @@ export default function DeretUkurHitung() {
                                 <tr>
                                     <td>a</td>
                                     <td>=</td>
-                                    <td><input type="text" value={sukuPertama} onChange={(e) => setSukuPertama(e.target.value)} /></td>
+                                    <td><input type="text" value={sukuPertama || ''} onChange={(e) => setSukuPertama(e.target.value)} /></td>
                                 </tr>
                                 <tr>
                                     <td>b</td>
                                     <td>=</td>
-                                    <td><input type="text" value={pembeda} onChange={(e) => setPembeda(e.target.value)} /></td>
+                                    <td><input type="text" value={pembeda || ''} onChange={(e) => setPembeda(e.target.value)} /></td>
                                 </tr>
                                 <tr>
                                     <td>n</td>
                                     <td>=</td>
-                                    <td><input type="text" value={indexSuku} onChange={(e) => setIndexSuku(e.target.value)} /></td>
+                                    <td><input type="text" value={indexSuku || ''} onChange={(e) => setIndexSuku(e.target.value)} /></td>
                                 </tr>
                         </table>
                 </div>
@@ -120,8 +136,8 @@ export default function DeretUkurHitung() {
                 </div>
             </div>
             <div className='flex items-center justify-center gap-6'>
-                <button className='btnBrand' onClick={() => hitungRumus('hitung')}>hitung</button>
-                <button className='btnBrand' onClick={() => hitungRumus('hapus')}>bersihkan</button>
+                <button className='btnBrand' onClick={hitungRumus}>hitung</button>
+                <button className='btnBrand' onClick={hapusInputan}>bersihkan</button>
             </div>
         </div>
     
