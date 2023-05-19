@@ -12,17 +12,17 @@ export default function DeretUkurHitung() {
     const totalTo = Number(sukuPertama)
     const total = totalTo + ((indexSuku - 1) * (pembeda))
     function hitungRumus(isi){
-        if(isi === 'hitung' && sukuPertama != '' && pembeda != '' && indexSuku != '') {
+        if(isi === 'hitung' && !Number.isNaN(sukuPertama) && !Number.isNaN(pembeda) && !Number.isNaN(indexSuku) && moduleHidden === false) {
             setHitung(true)
-        }if(isi != 'hitung') {
-            setIndexSuku()
-            setPembeda()
-            setSukuPertama()
+        }if(isi != 'hitung' && !Number.isNaN(sukuPertama) && !Number.isNaN(pembeda) && !Number.isNaN(indexSuku)) {
+            setIndexSuku('')
+            setPembeda('')
+            setSukuPertama('')
             setHitung(false)
         } 
         else{
-            if(sukuPertama === '' && pembeda === '' && indexSuku === '' || Number.isNaN(sukuPertama) && Number.isNaN(pembeda) && Number.isNaN(indexSuku)) {
-                
+            if(sukuPertama === '' || pembeda === '' || indexSuku === '' || !Number.isNaN(sukuPertama) || !Number.isNaN(pembeda) || !Number.isNaN(indexSuku) || Number.isNaN(sukuPertama) || Number.isNaN(pembeda) || Number.isNaN(indexSuku)) {
+                setHitung(false) 
                 setModuleHidden(true)
             }
         }
@@ -35,15 +35,17 @@ export default function DeretUkurHitung() {
         <div className="contHitung mt-5">
         
             <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
+
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
                 <div className='box-warning deretHitung-warning'>
                     <div className="box">
-                        <h1 className='text-center font-bold'>Ada yang belum di isi!!!</h1>
-                        <h3 className='text-center font-normal text-sm'>Masih ada yang kosong<br/>pada bagian di ketahuinya<br/>tapi selain Sn</h3>
+                        <h1 className='text-center font-bold'>Kesalahan input !!!</h1>
+                        <h3 className='text-center font-normal text-sm'>anda memasuki selain angka<br/>atau inputan masih kosong</h3>
                         <button className='btnBrand text-center' onClick={closeModule}>Yoi</button>
                     </div>
                 </div>
             </div>
+
             <div className="input-deretHtg flex justify-center items-center flex-col">
                 <div className="flex gap-2 justify-center items-center my-4">
                 <label htmlFor="Rumus">Pilih rumus</label>
