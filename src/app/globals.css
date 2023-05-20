@@ -92,4 +92,10 @@ body{
 .btnBrand {
     background-color: var(--brand);
     color: white;
+    border-radius: 4px;
+    @apply px-3 py-1;
+}
+.keterangan-deretHtg {
+    color: var(--brand);
+    opacity: .7;
 }

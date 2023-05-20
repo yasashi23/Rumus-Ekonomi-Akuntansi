@@ -6,7 +6,7 @@ export default function DeretUkur() {
 
   return (
     <div>
-        <div className="cont">
+        <div className="cont-deretUkur">
             <h1 className="text-center mb-6">Deret Ukur</h1>
             <div className="rumus flex justify-center">
                 <div className="rumusnyaCont rumusKe1">

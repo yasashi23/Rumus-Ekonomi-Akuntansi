@@ -9,9 +9,12 @@ export default function DeretUkurHitung() {
     const [hitung, setHitung] = useState(false)
     const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
+    const [pilihRumus, setPilihRumus] = useState('rumus1')
     console.log(typeof sukuPertama != 'string' && typeof pembeda != 'string' && typeof indexSuku != 'string' )
     console.log(typeof sukuPertama)
 
+
+    console.log(pilihRumus)
     // check if string there is no numbe 
     function checkStringNumber(s){
         const result = /\D/.test(s)
@@ -65,12 +68,12 @@ export default function DeretUkurHitung() {
             <div className="input-deretHtg flex justify-center items-center flex-col">
                 <div className="flex gap-2 justify-center items-center my-4">
                 <label htmlFor="Rumus">Pilih rumus</label>
-                <select name="Rumus" id="Rumus" className='selectDeretHtg'>
-                    <option value="Rumus1">Rumus 1</option>
-                    <option value="Rumus2">Rumus 2</option>
+                <select name="Rumus" id="Rumus" className='selectDeretHtg' value={pilihRumus} onChange={(e) => setPilihRumus(e.target.value)}>
+                    <option value="rumus1">Rumus 1</option>
+                    <option value="rumus2">Rumus 2</option>
                 </select>
                 </div>
-            <p className='text-center text-sm mb-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
+            <p className='keterangan-deretHtg text-center text-sm mb-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
             </div>
             <div className="rumusDanJawabannya flex justify-center items-end gap-6">
                 <div className="deretHtg-dik flex justify-center flex-col items-center ">
@@ -83,22 +86,22 @@ export default function DeretUkurHitung() {
                                 <tr>
                                     <td>Sn</td>
                                     <td>=</td>
-                                    <td><input type="text" value={Sn} onChange={(e) => setSn(e.target.value)}/></td>
+                                    <td><input type="text" value={Sn} onChange={(e) => setSn(e.target.value)} disabled/></td>
                                 </tr>
                                 <tr>
                                     <td>a</td>
                                     <td>=</td>
-                                    <td><input type="text" value={sukuPertama || ''} onChange={(e) => setSukuPertama(e.target.value)} /></td>
+                                    <td><input type="text" value={sukuPertama || ''} onChange={(e) => setSukuPertama(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
                                     <td>b</td>
                                     <td>=</td>
-                                    <td><input type="text" value={pembeda || ''} onChange={(e) => setPembeda(e.target.value)} /></td>
+                                    <td><input type="text" value={pembeda || ''} onChange={(e) => setPembeda(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
                                     <td>n</td>
                                     <td>=</td>
-                                    <td><input type="text" value={indexSuku || ''} onChange={(e) => setIndexSuku(e.target.value)} /></td>
+                                    <td><input type="text" value={indexSuku || ''} onChange={(e) => setIndexSuku(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                         </table>
                 </div>
@@ -135,7 +138,7 @@ export default function DeretUkurHitung() {
 
                 </div>
             </div>
-            <div className='flex items-center justify-center gap-6'>
+            <div className='flex items-center justify-center gap-6 pt-4'>
                 <button className='btnBrand' onClick={hitungRumus}>hitung</button>
                 <button className='btnBrand' onClick={hapusInputan}>bersihkan</button>
             </div>
