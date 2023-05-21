@@ -45,7 +45,7 @@ export default function DeretUkur() {
                 <div className="rumusnyaCont rumusKe2">
                     <h1>Rumus 2</h1>
                     <div className="rumusnya">
-                        Sn = n/2 + {"(2a + (n-1))"}b
+                        Sn = n/2 {"(2a + (n-1))"}b
                     </div>
                     <div className="ket">
                         <p>Keterangan :</p>

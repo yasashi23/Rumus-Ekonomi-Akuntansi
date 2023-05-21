@@ -13,8 +13,14 @@ export default function DeretUkurHitung() {
     console.log(typeof sukuPertama != 'string' && typeof pembeda != 'string' && typeof indexSuku != 'string' )
     console.log(typeof sukuPertama)
 
+    const rumus2Tambahan = (<tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*pembeda)})`}</td>
+                                    </tr>) 
+    const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
 
-    console.log(pilihRumus)
+    console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
     // check if string there is no numbe 
     function checkStringNumber(s){
         const result = /\D/.test(s)
@@ -52,7 +58,6 @@ export default function DeretUkurHitung() {
   return (
     <div>
         <div className="contHitung mt-5">
-        
             <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
@@ -75,8 +80,8 @@ export default function DeretUkurHitung() {
                 </div>
             <p className='keterangan-deretHtg text-center text-sm mb-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
             </div>
-            <div className="rumusDanJawabannya flex justify-center items-end gap-6">
-                <div className="deretHtg-dik flex justify-center flex-col items-center ">
+            <div className="rumusDanJawabannya flex justify-center items-top gap-6">
+                <div className="deretHtg-dik flex justify-top flex-col items-center ">
                         <table>
                                 <tr>
                                     <th colSpan={3}>
@@ -105,7 +110,7 @@ export default function DeretUkurHitung() {
                                 </tr>
                         </table>
                 </div>
-                <div className="rumusJwb flex flex-col justify-end">
+                <div className="rumusJwb flex flex-col justify-top">
                         <table>
                                 <tr>
                                     <th colSpan={3}>
@@ -116,22 +121,24 @@ export default function DeretUkurHitung() {
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{sukuPertama} + {`(${(indexSuku)}-1)`} {pembeda} </td>
+                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + (${indexSuku}-1) ${pembeda}` : `${indexSuku}/2 (2(${sukuPertama}) + (${indexSuku}-1) ${pembeda}) ` }</td>    
                                     </tr>
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{sukuPertama} + {`(${(indexSuku-1)})`} {pembeda}</td>
+ 
+                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + (${(indexSuku-1)}) ${pembeda}` : `${indexSuku/2} (${2*sukuPertama} + (${indexSuku-1}) ${pembeda})`} </td>
+                                    </tr>
+                                    {pilihRumus1Atau2 ? '' : rumus2Tambahan}
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + ${(indexSuku-1)*pembeda}` : `${indexSuku/2} (${(2*sukuPertama) + ((indexSuku-1)*pembeda)})`}</td>
                                     </tr>
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{sukuPertama} + {`${(indexSuku-1)*pembeda}`}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>S<span>{indexSuku}</span></td>
-                                        <td>=</td>
-                                        <td>{Number(sukuPertama) + ((indexSuku-1)*pembeda)} </td>
+                                        <td>{pilihRumus1Atau2 ? `${Number(sukuPertama) + ((indexSuku-1)*pembeda)}` : `${indexSuku/2 * ((2*sukuPertama) + ((indexSuku-1)*pembeda))}`} </td>
                                     </tr>
                                 </div>
                         </table>
