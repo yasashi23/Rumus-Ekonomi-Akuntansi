@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react'
-import DeretUkurHitung from './deretUkurHitung'
+import DeretUkurRumus from './deretUkurRumus'
 
 export default function DeretUkur() {
 
@@ -78,7 +78,7 @@ export default function DeretUkur() {
             </div>
         </div>
         <div className="hitungnya">
-            <DeretUkurHitung/>            
+            <DeretUkurRumus/>            
         </div>
     </div>
   )

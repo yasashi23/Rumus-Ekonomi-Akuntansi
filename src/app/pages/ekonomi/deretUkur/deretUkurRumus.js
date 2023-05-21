@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 
-export default function DeretUkurHitung() {
+export default function DeretUkurRumus() {
     const [Sn, setSn] = useState('?')
     const [sukuPertama, setSukuPertama] = useState()
     const [pembeda, setPembeda] = useState()
