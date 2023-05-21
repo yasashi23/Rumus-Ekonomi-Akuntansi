@@ -23,7 +23,7 @@ export default function DeretHitungRumus() {
     console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
     // check if string there is no numbe 
     function checkStringNumber(s){
-        const result = /^[0-9.]+$/.test(s)
+        const result = /^[-0-9.]+$/.test(s)
         return result
     }
 
