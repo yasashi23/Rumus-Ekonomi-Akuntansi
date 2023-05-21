@@ -4,19 +4,21 @@ import React, { useState } from 'react'
 export default function DeretUkurRumus() {
     const [Sn, setSn] = useState('?')
     const [sukuPertama, setSukuPertama] = useState()
-    const [pembeda, setPembeda] = useState()
+    const [rasio, setRasio] = useState()
     const [indexSuku, setIndexSuku] = useState()
     const [hitung, setHitung] = useState(false)
     const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
     const [pilihRumus, setPilihRumus] = useState('rumus1')
-    console.log(typeof sukuPertama != 'string' && typeof pembeda != 'string' && typeof indexSuku != 'string' )
-    console.log(typeof sukuPertama)
+
+    const rasioRumus1 = (<div className='flex'>{sukuPertama}({rasio}<span className='text-base'>{indexSuku}-1</span>)</div>)
+
+    console.log(rasioRumus1)
 
     const rumus2Tambahan = (<tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*pembeda)})`}</td>
+                                        <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*rasio)})`}</td>
                                     </tr>) 
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
 
@@ -29,10 +31,10 @@ export default function DeretUkurRumus() {
 
     function hitungRumus(){
 
-            if(typeof sukuPertama != 'undefined' && typeof pembeda != 'undefined' && typeof indexSuku != 'undefined' && !checkStringNumber(sukuPertama) && !checkStringNumber(pembeda) && !checkStringNumber(indexSuku)){
+            if(typeof sukuPertama != 'undefined' && typeof rasio != 'undefined' && typeof indexSuku != 'undefined' && !checkStringNumber(sukuPertama) && !checkStringNumber(rasio) && !checkStringNumber(indexSuku)){
                 setHitung(true)
                 console.log('hitung')
-                console.log(Number.isNaN(pembeda))
+                console.log(Number.isNaN(rasio))
                 setRemove(false)
             }
              else{
@@ -45,7 +47,7 @@ export default function DeretUkurRumus() {
     }
     function hapusInputan() {
         setIndexSuku(undefined)
-        setPembeda(undefined)
+        setRasio(undefined)
         setSukuPertama(undefined)
         setHitung(false)
         setRemove(true)
@@ -99,9 +101,9 @@ export default function DeretUkurRumus() {
                                     <td><input type="text" value={sukuPertama || ''} onChange={(e) => setSukuPertama(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
-                                    <td>b</td>
+                                    <td>r</td>
                                     <td>=</td>
-                                    <td><input type="text" value={pembeda || ''} onChange={(e) => setPembeda(e.target.value)} disabled={hitung}/></td>
+                                    <td><input type="text" value={rasio || ''} onChange={(e) => setRasio(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
                                     <td>n</td>
@@ -121,24 +123,24 @@ export default function DeretUkurRumus() {
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + (${indexSuku}-1) ${pembeda}` : `${indexSuku}/2 (2(${sukuPertama}) + (${indexSuku}-1) ${pembeda}) ` }</td>    
+                                        <td className='flex'>{sukuPertama} ({rasio}<span className='text-xs'>({indexSuku}-1) </span>)</td>    
                                     </tr>
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
  
-                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + (${(indexSuku-1)}) ${pembeda}` : `${indexSuku/2} (${2*sukuPertama} + (${indexSuku-1}) ${pembeda})`} </td>
+                                        <td className='flex'>{sukuPertama} ({rasio}<span className='text-xs'>{indexSuku-1} </span>)</td>
                                     </tr>
                                     {pilihRumus1Atau2 ? '' : rumus2Tambahan}
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{pilihRumus1Atau2 ? `${sukuPertama} + ${(indexSuku-1)*pembeda}` : `${indexSuku/2} (${(2*sukuPertama) + ((indexSuku-1)*pembeda)})`}</td>
+                                        <td className='flex'>{sukuPertama} ({(rasio)**(indexSuku-1)})</td>
                                     </tr>
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{pilihRumus1Atau2 ? `${Number(sukuPertama) + ((indexSuku-1)*pembeda)}` : `${indexSuku/2 * ((2*sukuPertama) + ((indexSuku-1)*pembeda))}`} </td>
+                                        <td>{sukuPertama * ((rasio)**(indexSuku-1))}</td>
                                     </tr>
                                 </div>
                         </table>

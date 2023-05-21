@@ -3,16 +3,17 @@ import { useState } from 'react'
 import DeretUkurRumus from './deretUkurRumus'
 
 export default function DeretUkur() {
+    const [pilihRumus,setPilihRumus] = useState(true)
 
   return (
     <div>
         <div className="cont-deretUkur">
             <h1 className="text-center mb-6">Deret Ukur</h1>
             <div className="rumus flex justify-center">
-                <div className="rumusnyaCont rumusKe1">
+                <div className="rumusnyaCont rumusKe1 rumusDeretUkur">
                     <h1>Rumus 1</h1>
-                    <div className="rumusnya">
-                        Sn = a + {"(n-1)"}b
+                    <div className="rumusnya flex">
+                        Sn = a(r<span className='text-base'>n-1</span>)
                     </div>
                     <div className="ket">
                         <p>Keterangan :</p>
@@ -29,9 +30,9 @@ export default function DeretUkur() {
                                     <td>suku pertama</td>
                                 </tr>
                                 <tr>
-                                    <td>b</td>
+                                    <td>r</td>
                                     <td>=</td>
-                                    <td>Pembeda</td>
+                                    <td>Rasio / Pengganda</td>
                                 </tr>
                                 <tr>
                                     <td>n</td>
@@ -44,9 +45,17 @@ export default function DeretUkur() {
                 </div>
                 <div className="rumusnyaCont rumusKe2">
                     <h1>Rumus 2</h1>
-                    <div className="rumusnya">
-                        Sn = n/2 {"(2a + (n-1))"}b
+
+                    <div className='pilihRasio flex gap-4'>
+                        <p className={pilihRumus === true ? 'opacity-100' : 'opacity-25'} onClick={() => setPilihRumus(true)}>r{" > 1"}</p>
+                        <p className={pilihRumus === true ? 'opacity-25' : 'opacity-100'} onClick={() => setPilihRumus(false)}>r{" < 1"}</p>
                     </div>
+
+                    <div className="rumusnya">
+                        {pilihRumus === true ? (<div className='flex'>Sn = a(1-r<span className='text-base'>n</span>)/1 - r</div>) : (<div className='flex'>Sn = a(r<span className='text-base'>n</span>-1)/r - 1</div>) }
+                        
+                    </div>
+
                     <div className="ket">
                         <p>Keterangan :</p>
                         <div className="isiKeterangan">
@@ -62,9 +71,9 @@ export default function DeretUkur() {
                                     <td>suku pertama</td>
                                 </tr>
                                 <tr>
-                                    <td>b</td>
+                                    <td>r</td>
                                     <td>=</td>
-                                    <td>Pembeda</td>
+                                    <td>Rasio / Pengganda</td>
                                 </tr>
                                 <tr>
                                     <td>n</td>

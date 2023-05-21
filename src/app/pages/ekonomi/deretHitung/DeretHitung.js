@@ -6,7 +6,7 @@ export default function DeretHitung() {
 
   return (
     <div>
-        <div className="cont-deretUkur">
+        <div className="cont-deretHitung">
             <h1 className="text-center mb-6">Deret Hitung</h1>
             <div className="rumus flex justify-center">
                 <div className="rumusnyaCont rumusKe1">

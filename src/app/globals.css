@@ -100,3 +100,11 @@ body{
     color: var(--brand);
     opacity: .7;
 }
+
+
+.pilihRasio p {
+    border-bottom: 2px solid var(--brand);
+    color: var(--brand);
+    cursor: pointer;
+}
+
