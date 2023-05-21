@@ -23,13 +23,13 @@ export default function DeretHitungRumus() {
     console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
     // check if string there is no numbe 
     function checkStringNumber(s){
-        const result = /\D/.test(s)
+        const result = /^[0-9.]+$/.test(s)
         return result
     }
 
     function hitungRumus(){
 
-            if(typeof sukuPertama != 'undefined' && typeof pembeda != 'undefined' && typeof indexSuku != 'undefined' && !checkStringNumber(sukuPertama) && !checkStringNumber(pembeda) && !checkStringNumber(indexSuku)){
+            if(typeof sukuPertama != 'undefined' && typeof pembeda != 'undefined' && typeof indexSuku != 'undefined' && checkStringNumber(sukuPertama) && checkStringNumber(pembeda) && checkStringNumber(indexSuku)){
                 setHitung(true)
                 console.log('hitung')
                 console.log(Number.isNaN(pembeda))
