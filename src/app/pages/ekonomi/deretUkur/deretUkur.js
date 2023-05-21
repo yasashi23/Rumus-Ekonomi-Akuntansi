@@ -13,7 +13,7 @@ export default function DeretUkur() {
                 <div className="rumusnyaCont rumusKe1 rumusDeretUkur">
                     <h1>Rumus 1</h1>
                     <div className="rumusnya flex">
-                        Sn = a(r<span className='text-base'>n-1</span>)
+                        Sn = a(r<span className='text-base'>(n-1)</span>)
                     </div>
                     <div className="ket">
                         <p>Keterangan :</p>
