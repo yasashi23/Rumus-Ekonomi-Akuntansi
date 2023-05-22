@@ -18,6 +18,8 @@ export default function FungsiPermintaanRumus() {
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
     const Konstantanya = (((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))/(permintaan2-permintaan1)
 
+    
+
     console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
     // check if string there is no numbe 
     function checkStringNumber(s){
@@ -39,42 +41,80 @@ function jikaMinus(minus) {
     }
 }
 
-        function pch2(atas,bawah) {
+        function negativeCheck(up,down) {
+            const upAdaNegatif = up.toString().includes("-")
+            const downAdaNegatif = down.toString().includes("-")
+            const keduanyaNegative = upAdaNegatif && downAdaNegatif
+            const hasil = {atas:up, bawah:down}
+            if(upAdaNegatif || downAdaNegatif || keduanyaNegative) {
+                if(upAdaNegatif) {
+                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:down} 
+                    return hasil   
+                }if(downAdaNegatif) {
+                    const hasil = {atas:up, bawah:Number(down.toString().replace("-",""))}  
+                    return hasil
+                }else {
+                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:Number(down.toString().replace("-",""))} 
+                    return hasil
+                }
+            }else{
+                return hasil
+            }
+
+        }
+        function pch2(num) {
+          const atas = num.atasNew
+          const bawah = num.bawahNew  
+          const atasReal = num.atasLast
+          const bawahReal = num.bawahLast
 
         if(atas%2===0 && bawah%2===0){
             const checkSisaAtas = (atas%bawah === 0)
             const checkSisaBawah = (bawah%atas === 0)
             if(atas > bawah) {
                 if(checkSisaAtas){
-                    const mauY = {atas:(atas/bawah)}
+                    const mauY = {atas:(atasReal/bawah),per:false,baris:'52'}
                     return mauY
                 }else{
                     const hsl = atas%bawah
-                    const selisih = 1*(hsl)
-                    const mauY={atas:(atas/selisih),bawah:(bawah/selisih)}
+                    const selisih = bawah-(1*(hsl))
+                    const mauY={atas:(atasReal/selisih),bawah:(bawahReal/selisih),per:true,baris:'57'}
                     return mauY
                     // return `${atas/selisih}/${bawah/selisih}`
                 }
             }
             else {
                 if(checkSisaBawah) {
-                    const mauY={atas:(atas/atas),bawah:(bawah/atas)}
+                    const mauY={atas:(atasReal/atas),bawah:(bawahReal/atas),per:true,baris:'64'}
                     return mauY
-                    // return `${atas/atas}/${bawah/atas}`
                 }else {
                     const hsl = bawah%atas
-                    const selisih = 1*(hsl)
-                    const mauY={atas:(atas/selisih),bawah:(bawah/selisih)}
+                    const selisih = atas-(1*(hsl))
+                    const mauY={atas:(atasReal/selisih),bawah:(bawahReal/selisih),per:true,baris:'69'}
                     return mauY
-                    // return `${atas/selisih}/${bawah/selisih}`
                 }
             }
         }else {
-            return `ganjil ${atas}/${bawah}`
+            const mauY={atas,bawah,per:true,baris:'74'}
+            return mauY
         }
 
     }
 
+    const iniHasilPersamaan = negativeCheck((harga2 - harga1),(permintaan2-permintaan1))
+
+    const rulePembagian = {
+        atasNew: iniHasilPersamaan.atas,
+        bawahNew: iniHasilPersamaan.bawah,
+        atasLast: (harga2 - harga1),
+        bawahLast: (permintaan2-permintaan1)
+    }
+
+
+    
+
+    console.log("101 : ",pch2(rulePembagian))
+    
     function hitungRumus(){
 
             if(typeof harga2 != 'undefined' && typeof permintaan1 != 'undefined' && typeof permintaan2 != 'undefined' && checkStringNumber(harga2) && checkStringNumber(permintaan1) && checkStringNumber(permintaan2)){
@@ -200,9 +240,7 @@ function jikaMinus(minus) {
                                     </tr>
 
 
-
-
-
+                                    {/* PERSAMAANNYA */}
                                     <tr>
                                         <td rowSpan={2} className='align-middle'>P</td>
                                         <td rowSpan={2} className='align-middle'>=</td>
@@ -213,11 +251,16 @@ function jikaMinus(minus) {
                                     <tr>
                                         <td colSpan={2} className='jawaban-pernya'>{permintaan2-permintaan1}</td>   
                                     </tr>
+
+                                    {/* PERSAMAANNYA TUTUP*/}
+
+
                                    <tr>
                                         <td>P</td>
                                         <td>=</td>
                                         <td>{(harga2 - harga1)/(permintaan2-permintaan1)}Qd {jikaMinus((((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))/(permintaan2-permintaan1))}</td>
                                     </tr>
+
                                     {/* Grafik kartesiusnya */}
                                     <tr>
                                         <td colSpan={3} className='font-bold'>Titik Grafik Kartesiusnya</td>
