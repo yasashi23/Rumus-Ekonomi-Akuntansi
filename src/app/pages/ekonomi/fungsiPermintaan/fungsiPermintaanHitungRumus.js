@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import CartesianChart from '../grafik/grafikKartesiusnya'
 
 export default function FungsiPermintaanRumus() {
     const [harga1, setHarga1] = useState()
@@ -206,6 +207,11 @@ function jikaMinus(minus) {
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
                                         <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))},0)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <CartesianChart/>
+                                        </td>
                                     </tr>
                                 </div>
                         </table>
