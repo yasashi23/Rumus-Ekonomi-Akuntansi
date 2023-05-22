@@ -122,24 +122,50 @@ body{
     @apply px-3 text-center ;
 }
 
-.tableJawaban .signLine, .jawaban.signLine{
+.tableJawaban .signLine, .jawaban.signLine,
+.contFungsiPermintaanHitung .rumusJwb table tr .lineKonstanta{
     border-bottom: solid 1px black;
 }
+
+.tableJawaban .signLine2{
+    border-top: solid 1px black;
+}
+
 .tableJawaban .samaDengan {
     @apply px-2 align-middle;
 }
 
 
+
 .contFungsiPermintaanHitung .rumusJwb table tr td {
     @apply text-center;
+}
+.contFungsiPermintaanHitung .rumusJwb table tr td.tdSetup.right{
+text-align: -webkit-right;
 }
 .contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(3) {
     @apply text-right;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(1) {
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5):nth-child(-n+8) td:nth-last-of-type(1) {
     @apply text-left;
 }
 .contFungsiPermintaanHitung .rumusJwb table tr:nth-child(10) td:nth-last-of-type(1),
 .contFungsiPermintaanHitung .rumusJwb table tr:nth-child(9) td:nth-last-of-type(1) {
     @apply text-center;
+}
+
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(1){
+    @apply text-right align-middle;
+}
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(2) {
+    @apply text-center align-middle;
+}
+
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(3),
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(12) td:nth-child(1) {
+    @apply text-left align-middle;
+}
+
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td.konstantaAda {
+    @apply align-middle;
 }

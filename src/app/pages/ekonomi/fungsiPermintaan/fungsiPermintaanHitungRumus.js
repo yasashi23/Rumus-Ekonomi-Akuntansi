@@ -10,8 +10,6 @@ export default function FungsiPermintaanRumus() {
     const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
     const [pilihRumus, setPilihRumus] = useState('rumus1')
-    console.log(typeof harga2 != 'string' && typeof permintaan1 != 'string' && typeof permintaan2 != 'string' )
-    console.log(typeof harga2)
 
 
     
@@ -20,7 +18,6 @@ export default function FungsiPermintaanRumus() {
 
     
 
-    console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
     // check if string there is no numbe 
     function checkStringNumber(s){
         const result = /^[-0-9.]+$/.test(s)
@@ -40,21 +37,40 @@ function jikaMinus(minus) {
         return ` + ${minus}`
     }
 }
+function jikaMinusHasil(minus) {
+    const checkMinus = minus.toString().includes("-")
+    if (checkMinus) {
+        const isi = {
+            angka:minus.toString().replace("-",""),
+            opt:"-",
+            hsl:minus
+        }
+        return isi
+    }
+    else{
+        const isi = {
+            angka:minus.toString(),
+            opt:"+",
+            hsl:minus
+        }
+        return isi
+    }
+}
 
         function negativeCheck(up,down) {
             const upAdaNegatif = up.toString().includes("-")
             const downAdaNegatif = down.toString().includes("-")
             const keduanyaNegative = upAdaNegatif && downAdaNegatif
-            const hasil = {atas:up, bawah:down}
+            const hasil = {atas:up, bawah:down,ket:'biasa'}
             if(upAdaNegatif || downAdaNegatif || keduanyaNegative) {
                 if(upAdaNegatif) {
-                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:down} 
+                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:down,ket:'upAda'} 
                     return hasil   
                 }if(downAdaNegatif) {
-                    const hasil = {atas:up, bawah:Number(down.toString().replace("-",""))}  
+                    const hasil = {atas:up, bawah:Number(down.toString().replace("-","")),ket:'downAda'}  
                     return hasil
                 }else {
-                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:Number(down.toString().replace("-",""))} 
+                    const hasil = {atas:Number(up.toString().replace("-","")), bawah:Number(down.toString().replace("-","")),ket:'doubleAda'} 
                     return hasil
                 }
             }else{
@@ -101,33 +117,42 @@ function jikaMinus(minus) {
 
     }
 
-    const iniHasilPersamaan = negativeCheck((harga2 - harga1),(permintaan2-permintaan1))
+    const iniHasilPersamaan = negativeCheck((harga2 - harga1),(-1*(permintaan2-permintaan1)))
+    const untukKonstanta = negativeCheck((((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1)))), (permintaan2-permintaan1))
 
     const rulePembagian = {
         atasNew: iniHasilPersamaan.atas,
         bawahNew: iniHasilPersamaan.bawah,
         atasLast: (harga2 - harga1),
-        bawahLast: (permintaan2-permintaan1)
+        bawahLast: (-1*(permintaan2-permintaan1))
+    }
+        const rulePembagian2 = {
+        atasNew: untukKonstanta.atas,
+        bawahNew: untukKonstanta.bawah,
+        atasLast: (((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1)))),
+        bawahLast:  (permintaan2-permintaan1)
     }
 
 
-    
+    const bentukPecahan = pch2(rulePembagian)
+    const konstaPecahan = pch2(rulePembagian2)
+    const minusHasil = jikaMinusHasil(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))
 
-    console.log("101 : ",pch2(rulePembagian))
+    console.log("minusHasil",minusHasil)
+    console.log("ini hasil persamaan",iniHasilPersamaan)
+    console.log("untuk konstanta",untukKonstanta)
+    console.log("bentuk Pecahan",bentukPecahan)
+    console.log("konstanta Pecahan",konstaPecahan)
     
     function hitungRumus(){
 
             if(typeof harga2 != 'undefined' && typeof permintaan1 != 'undefined' && typeof permintaan2 != 'undefined' && checkStringNumber(harga2) && checkStringNumber(permintaan1) && checkStringNumber(permintaan2)){
                 setHitung(true)
-                console.log('hitung')
-                console.log(Number.isNaN(permintaan1))
                 setRemove(false)
             }
              else{
                 setHitung(false) 
                 setModuleHidden(true)
-                console.log(typeof permintaan2)
-                console.log('else hitung')
             }
        
     }
@@ -143,7 +168,6 @@ function jikaMinus(minus) {
     function closeModule() {
         setModuleHidden(false)
     }
-    console.log(permintaan2)
   return (
     <div>
         <div className="contFungsiPermintaanHitung mt-5">
@@ -200,24 +224,65 @@ function jikaMinus(minus) {
                                     </th>
                                 </tr>
                                 <div className={hitung ? 'block' : 'hidden'}>
+
+
+                                
+
                                     <tr className='tableJawaban'>
-                                        <td className='signLine'>P - {harga1}</td>
+                                        <td className='tdSetup right' rowSpan={2}>
+                                            <table>
+                                                <tr>
+                                                    <td>P - {harga1}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className='signLine2'>{harga2} - {harga1}</td>
+                                                </tr> 
+                                            </table>
+                                        </td>
                                         <td className='samaDengan' rowSpan={2}> = </td>
-                                        <td className='signLine'>Qd - {permintaan1}</td>
+                                        <td className='tdSetup left' rowSpan={2}>
+                                            <table>
+                                                <tr>
+                                                    <td>Qd - {permintaan1}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td className='signLine2'>{permintaan2} - {permintaan1}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>{harga2} - {harga1}</td>
-                                        <td>{permintaan2} - {permintaan1}</td>
-                                    </tr>
+                                    <tr></tr>
+
+                                    {/* susunan rumusnya */}  
+
+
                                     <tr className='tableJawaban'>
-                                        <td className='signLine'>P - {harga1}</td>
+                                        <td className='tdSetup right'>
+                                            <table>
+                                                <tr>
+                                                    <td className='signLine'>P - {harga1}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{harga2-harga1}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
                                         <td className='samaDengan' rowSpan={2}> = </td>
-                                        <td className='signLine'>Qd - {permintaan1}</td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td className='signLine'>Qd - {permintaan1}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>{permintaan2-permintaan1}</td>
+                                                </tr>
+                                            </table>
+                                        </td>
                                     </tr>
-                                    <tr>
-                                        <td>{harga2-harga1}</td>
-                                        <td>{permintaan2-permintaan1}</td>
-                                    </tr>
+                                    <tr></tr>
+
+
+                                    {/* susunan rumusnya tutup */}
                                     <tr>
                                         <td>{permintaan2-permintaan1}(P - {harga1})</td>
                                         <td>=</td>
@@ -244,26 +309,50 @@ function jikaMinus(minus) {
                                     <tr>
                                         <td rowSpan={2} className='align-middle'>P</td>
                                         <td rowSpan={2} className='align-middle'>=</td>
-                                        <td className='jawaban signLine'>{harga2 - harga1}Qd {jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td className='jawaban signLine'>{harga2 - harga1}Qd {jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colSpan={2} className='jawaban-pernya'>{-1*(permintaan2-permintaan1)}</td>   
+                                                </tr>
+                                            </table>
                                         </td>
                                     </tr>
                                         
-                                    <tr>
-                                        <td colSpan={2} className='jawaban-pernya'>{permintaan2-permintaan1}</td>   
-                                    </tr>
+                                    <tr></tr>
 
                                     {/* PERSAMAANNYA TUTUP*/}
 
+                                    <tr>
+                                        <td rowSPan="2">P</td>
+                                        <td rowSPan="2">=</td>
+                                        <td rowSpan={2}>
+                                            <table>
+                                                <tr>
+                                                    {bentukPecahan.per ? <td className='lineKonstanta'>{bentukPecahan.atas}</td> : <td>{bentukPecahan.atas}</td> }
 
-                                   <tr>
-                                        <td>P</td>
-                                        <td>=</td>
-                                        <td>{(harga2 - harga1)/(permintaan2-permintaan1)}Qd {jikaMinus((((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))/(permintaan2-permintaan1))}</td>
+                                                    {bentukPecahan.per ? <td rowSpan="2" className='konstantaAda pl-2'>Qd</td> : <td>Qd</td>}
+                                                
+                                                    {bentukPecahan.per  ? <td rowSpan="2" className='konstantaAda'>{minusHasil.opt}</td> : <td>{minusHasil.opt}</td> }
+
+                                                    {untukKonstanta.per ? <td className='konstantaAda'>{konstaPecahan.atas}</td> : <td className='konstantaAda' rowSpan={2}>{konstaPecahan.atas}</td>}
+                                                </tr>
+                                                <tr>
+                                                    {bentukPecahan.per ? <td>{bentukPecahan.bawah}</td> : ''}
+                                                    {untukKonstanta.per ? <td>{konstaPecahan.bawah}</td> : ''}
+                                                </tr>
+                                            </table>
+                                        </td>
                                     </tr>
+                                    <tr></tr>
+                                    {/* yang harus di ubah */}
 
                                     {/* Grafik kartesiusnya */}
                                     <tr>
-                                        <td colSpan={3} className='font-bold'>Titik Grafik Kartesiusnya</td>
+                                        <td colSpan={3} className='font-bold text-center'>Titik Grafik Kartesiusnya</td>
                                     </tr>
                                     <tr>
                                         <td>P = (0 , {Konstantanya})</td>
