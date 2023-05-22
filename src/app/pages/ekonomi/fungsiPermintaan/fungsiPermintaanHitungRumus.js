@@ -1,6 +1,5 @@
 "use client"
 import React, { useState } from 'react'
-import CartesianChart from '../grafik/grafikKartesiusnya'
 
 export default function FungsiPermintaanRumus() {
     const [harga1, setHarga1] = useState()
@@ -39,6 +38,42 @@ function jikaMinus(minus) {
         return ` + ${minus}`
     }
 }
+
+        function pch2(atas,bawah) {
+
+        if(atas%2===0 && bawah%2===0){
+            const checkSisaAtas = (atas%bawah === 0)
+            const checkSisaBawah = (bawah%atas === 0)
+            if(atas > bawah) {
+                if(checkSisaAtas){
+                    const mauY = {atas:(atas/bawah)}
+                    return mauY
+                }else{
+                    const hsl = atas%bawah
+                    const selisih = 1*(hsl)
+                    const mauY={atas:(atas/selisih),bawah:(bawah/selisih)}
+                    return mauY
+                    // return `${atas/selisih}/${bawah/selisih}`
+                }
+            }
+            else {
+                if(checkSisaBawah) {
+                    const mauY={atas:(atas/atas),bawah:(bawah/atas)}
+                    return mauY
+                    // return `${atas/atas}/${bawah/atas}`
+                }else {
+                    const hsl = bawah%atas
+                    const selisih = 1*(hsl)
+                    const mauY={atas:(atas/selisih),bawah:(bawah/selisih)}
+                    return mauY
+                    // return `${atas/selisih}/${bawah/selisih}`
+                }
+            }
+        }else {
+            return `ganjil ${atas}/${bawah}`
+        }
+
+    }
 
     function hitungRumus(){
 
@@ -85,13 +120,6 @@ function jikaMinus(minus) {
             </div>
 
             <div className="input-deretHtg flex justify-center items-center flex-col">
-                <div className="flex gap-2 justify-center items-center my-4">
-                <label htmlFor="Rumus">Pilih rumus</label>
-                <select name="Rumus" id="Rumus" className='selectDeretHtg' value={pilihRumus} onChange={(e) => setPilihRumus(e.target.value)}>
-                    <option value="rumus1">Rumus 1</option>
-                    <option value="rumus2">Rumus 2</option>
-                </select>
-                </div>
             <p className='keterangan-deretHtg text-center text-sm mb-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
             </div>
             <div className="rumusDanJawabannya flex justify-center items-top gap-6">
@@ -179,15 +207,6 @@ function jikaMinus(minus) {
                                         <td rowSpan={2} className='align-middle'>P</td>
                                         <td rowSpan={2} className='align-middle'>=</td>
                                         <td className='jawaban signLine'>{harga2 - harga1}Qd {jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}
-                                            {/* <table className='tableJawaban akhir'>
-                                                <tr>
-                                                    <td className='signLine'>{harga2 - harga1}Qd </td>
-                                                    <td className='signLine'>{jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colSpan={2}>{permintaan2-permintaan1}</td>
-                                                </tr>
-                                            </table> */}
                                         </td>
                                     </tr>
                                         
@@ -201,17 +220,12 @@ function jikaMinus(minus) {
                                     </tr>
                                     {/* Grafik kartesiusnya */}
                                     <tr>
-                                        <td colSpan={3} className='font-bold'>Grafik Kartesiusnya</td>
+                                        <td colSpan={3} className='font-bold'>Titik Grafik Kartesiusnya</td>
                                     </tr>
                                     <tr>
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
                                         <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))},0)</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <CartesianChart/>
-                                        </td>
                                     </tr>
                                 </div>
                         </table>
