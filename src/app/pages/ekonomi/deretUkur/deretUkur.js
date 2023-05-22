@@ -47,8 +47,8 @@ export default function DeretUkur() {
                     <h1>Rumus 2</h1>
 
                     <div className='pilihRasio flex gap-4'>
-                        <p className={pilihRumus === true ? 'opacity-100' : 'opacity-25'} onClick={() => setPilihRumus(true)}>r{" > 1"}</p>
-                        <p className={pilihRumus === true ? 'opacity-25' : 'opacity-100'} onClick={() => setPilihRumus(false)}>r{" < 1"}</p>
+                        <p className={pilihRumus === true ? 'opacity-100' : 'opacity-25'} onClick={() => setPilihRumus(true)}>r{" < 1"}</p>
+                        <p className={pilihRumus === true ? 'opacity-25' : 'opacity-100'} onClick={() => setPilihRumus(false)}>r{" > 1"}</p>
                     </div>
 
                     <div className="rumusnya">

@@ -108,3 +108,38 @@ body{
     cursor: pointer;
 }
 
+
+.rumusnya .signLine {
+    border-bottom:solid 2px rgb(255, 255, 255);
+}
+
+.cont-fungsiPermintaan .rumusnya table tr td, .tableJawaban tr td {
+    @apply text-center;
+
+}
+
+.cont-fungsiPermintaan table .samaDengan {
+    @apply px-3 text-center ;
+}
+
+.tableJawaban .signLine, .jawaban.signLine{
+    border-bottom: solid 1px black;
+}
+.tableJawaban .samaDengan {
+    @apply px-2 align-middle;
+}
+
+
+.contFungsiPermintaanHitung .rumusJwb table tr td {
+    @apply text-center;
+}
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(3) {
+    @apply text-right;
+}
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(1) {
+    @apply text-left;
+}
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(10) td:nth-last-of-type(1),
+.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(9) td:nth-last-of-type(1) {
+    @apply text-center;
+}

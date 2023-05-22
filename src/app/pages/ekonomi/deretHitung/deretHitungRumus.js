@@ -14,10 +14,11 @@ export default function DeretHitungRumus() {
     console.log(typeof sukuPertama)
 
     const rumus2Tambahan = (<tr>
-                                        <td>S<span>{indexSuku}</span></td>
-                                        <td>=</td>
-                                        <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*pembeda)})`}</td>
-                                    </tr>) 
+                                <td>S<span>{indexSuku}</span></td>
+                                <td>=</td>
+                                <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*pembeda)})`}</td>
+                            </tr>) 
+    
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
 
     console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)

@@ -13,11 +13,19 @@ export default function DeretUkurRumus() {
     const [pilihRasio, setPilihRasio] = useState(true)
     
 
-    const rumus2Rasio1Tambahan = (pilihRasio ? <tr>
-                                    <td>S<span>{indexSuku}</span></td>
-                                    <td>=</td>
-                                    <td>{`${indexSuku/2} (${(2*sukuPertama)} + ${((indexSuku-1)*rasio)})`}</td>
-                                    </tr> : "udin") 
+    const rumus2Rasio1Tambahan = (pilihRasio ? 
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td className='flex'>{sukuPertama}({1-(rasio**indexSuku)})/{1-rasio}</td>
+                                    </tr> 
+                                    : 
+                                    <tr>
+                                        <td>S<span>{indexSuku}</span></td>
+                                        <td>=</td>
+                                        <td className='flex'>{sukuPertama}({(rasio**indexSuku)-1})/{rasio-1}</td>  
+                                    </tr>                                     
+                                    ) 
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
     const rasio1Atau2 = (pilihRasio === 'r>1')
 
@@ -120,8 +128,8 @@ export default function DeretUkurRumus() {
                                 {pilihRumus1Atau2 ? "" :
                                     <tr>
                                        <td className='flex items-center gap-3 justify-center' colSpan={3}>
-                                        <p className={`cursor-pointer ${pilihRasio === true ? 'opacity-100' : 'opacity-25'}`} onClick={() => setPilihRasio(true)}>r{" > 1"}</p>
-                                        <p className={`cursor-pointer ${pilihRasio === true ? 'opacity-25' : 'opacity-100'}`} onClick={() => setPilihRasio(false)}>r{" < 1"}</p>
+                                        <p className={`cursor-pointer ${pilihRasio === true ? 'opacity-100' : 'opacity-25'}`} onClick={() => setPilihRasio(true)}>r{" < 1"}</p>
+                                        <p className={`cursor-pointer ${pilihRasio === true ? 'opacity-25' : 'opacity-100'}`} onClick={() => setPilihRasio(false)}>r{" > 1"}</p>
                                        </td>
                                     </tr>
                                 }
@@ -147,10 +155,8 @@ export default function DeretUkurRumus() {
                                             :
                                             pilihRasio ? 
                                             <td className='flex'>{sukuPertama}(1-{rasio**indexSuku})/{1-rasio}</td> 
-                                            : 
-                                            <td className='flex'>{sukuPertama}(({rasio}<span className='text-xs'>{indexSuku}</span>)-1)/{rasio}-1</td>
-                                        
-                                        
+                                            :
+                                            <td className='flex'>{sukuPertama}({rasio**indexSuku}-1)/{rasio-1}</td>                        
                                         
                                         }
                                         
@@ -159,12 +165,28 @@ export default function DeretUkurRumus() {
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td className='flex'>{sukuPertama} ({(rasio)**(indexSuku-1)})</td>
+                                        {pilihRumus1Atau2 ? 
+                                            <td className='flex'>{sukuPertama} ({rasio**(indexSuku-1)})</td>
+                                            :
+                                            pilihRasio ? 
+                                            <td className='flex'>{sukuPertama*(1-(rasio**indexSuku))}/{1-rasio}</td>
+                                            : 
+                                            <td className='flex'>{sukuPertama*((rasio**indexSuku)-1)}/{rasio-1}</td>                       
+                                        
+                                        }
                                     </tr>
                                     <tr>
                                         <td>S<span>{indexSuku}</span></td>
                                         <td>=</td>
-                                        <td>{sukuPertama * ((rasio)**(indexSuku-1))}</td>
+                                        {pilihRumus1Atau2 ? 
+                                            <td className='flex'>{sukuPertama*(rasio**(indexSuku-1))} </td>
+                                            :
+                                            pilihRasio ? 
+                                            <td className='flex'>{(sukuPertama*(1-(rasio**indexSuku)))/(1-rasio)}</td>
+                                            : 
+                                            <td className='flex'>{(sukuPertama*((rasio**indexSuku)-1))/(rasio-1)}</td>                        
+                                        
+                                        }
                                     </tr>
                                 </div>
                         </table>
