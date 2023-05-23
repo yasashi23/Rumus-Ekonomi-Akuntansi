@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body >
-        <div className='mt-6 flex items-center justify-center flex-col'>
+        <div className='flexPro mt-6 flex items-center justify-center flex-col'>
           {children}
         </div>
       </body>

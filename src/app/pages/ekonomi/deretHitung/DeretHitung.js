@@ -10,7 +10,7 @@ export default function DeretHitung() {
             <h1 className="text-center mb-6">Deret Hitung</h1>
             <div className="rumus flex justify-center">
                 <div className="rumusnyaCont rumusKe1">
-                    <h1>Rumus 1</h1>
+                    <h1 className="deretHitung ">Rumus 1</h1>
                     <div className="rumusnya">
                         Sn = a + {"(n-1)"}b
                     </div>
@@ -43,7 +43,7 @@ export default function DeretHitung() {
                     </div>
                 </div>
                 <div className="rumusnyaCont rumusKe2">
-                    <h1>Rumus 2</h1>
+                    <h1 className="deretHitung ">Rumus 2</h1>
                     <div className="rumusnya">
                         Sn = n/2 {"(2a + (n-1))"}b
                     </div>

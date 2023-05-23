@@ -15,8 +15,6 @@ export default function FungsiPermintaanRumus() {
     const [pilihRumus, setPilihRumus] = useState('rumus1')
 
 
-    
-    const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
     const Konstantanya = (((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))/(permintaan2-permintaan1)
 
     
@@ -88,44 +86,7 @@ function tambahKoma(x) {
             }
 
         }
-    //     function pch2(num) {
-    //       const atas = (num.atasNew < 0 ? (num.atasNew*-1) : num.atasNew)
-    //       const bawah = (num.bawahNew < 0 ? (num.bawahNew*-1) : num.bawahNew)
-    //       const atasReal = num.atasNew
-    //       const bawahReal = num.bawahNew
 
-    //     if(atas%2===0 && bawah%2===0){
-    //         const checkSisaAtas = (atas%bawah === 0)
-    //         const checkSisaBawah = (bawah%atas === 0)
-    //         if(atas > bawah) {
-    //             if(checkSisaAtas){
-    //                 const mauY = {atas:(atasReal/bawah),per:false,baris:'52'}
-    //                 return mauY
-    //             }else{
-    //                 const hsl = atas%bawah
-    //                 const selisih = bawah-(1*(hsl))
-    //                 const mauY={atas:(atasReal/hsl),bawah:(bawahReal/hsl),per:true,baris:'57',selisih,hsl,bawahr:bawah}
-    //                 return mauY
-    //                 // return `${atas/selisih}/${bawah/selisih}`
-    //             }
-    //         }
-    //         else {
-    //             if(checkSisaBawah) {
-    //                 const mauY={atas:(atasReal/atasReal),bawah:(bawahReal/atasReal),per:true,baris:'64'}
-    //                 return mauY
-    //             }else {
-    //                 const hsl = bawah%atas
-    //                 const selisih = atas-(1*(hsl))
-    //                 const mauY={atas:(atasReal/hsl),bawah:(bawahReal/hsl),per:true,baris:'69'}
-    //                 return mauY
-    //             }
-    //         }
-    //     }else {
-    //         const mauY={atas,bawah,per:true,baris:'74'}
-    //         return mauY
-    //     }
-
-    // }
         function pch2(num) {
           const atas = Math.abs(num.atasNew)
           const bawah = Math.abs(num.bawahNew)
@@ -240,7 +201,7 @@ function tambahKoma(x) {
   return (
     <div>
         <div className="contFungsiPermintaanHitung cont-rmsFungsi mt-5">
-            <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
+            <h1 className='text-center text-xl font-semibold'>Hitung Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
                 <div className='box-warning deretHitung-warning'>

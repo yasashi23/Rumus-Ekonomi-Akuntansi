@@ -59,7 +59,7 @@ export default function DeretHitungRumus() {
   return (
     <div>
         <div className="contHitung mt-5">
-            <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
+            <h1 className='text-center text-xl font-semibold'>Hitung Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
                 <div className='box-warning deretHitung-warning'>
