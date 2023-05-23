@@ -1,11 +1,11 @@
 "use client"
 import React, { useState } from 'react'
 
-export default function FungsiPermintaanRumus() {
+export default function FungsiPenawaranRumus() {
     const [harga1, setHarga1] = useState()
     const [harga2, setHarga2] = useState()
-    const [permintaan1, setPermintaan1] = useState()
-    const [permintaan2, setPermintaan2] = useState()
+    const [penawaran1, setPenawaran1] = useState()
+    const [penawaran2, setPenawaran2] = useState()
     const [hitung, setHitung] = useState(false)
     const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
@@ -17,7 +17,7 @@ export default function FungsiPermintaanRumus() {
 
     
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
-    const Konstantanya = (((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))/(permintaan2-permintaan1)
+    const Konstantanya = (((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))/(penawaran2-penawaran1)
 
     
 
@@ -184,21 +184,21 @@ function tambahKoma(x) {
 }
 
 
-    const untukKonstanta = negativeCheck((((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1)))), (permintaan2-permintaan1))
+    const untukKonstanta = negativeCheck((((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1)))), (penawaran2-penawaran1))
 
     const rulePembagian = {
         atasNew: (harga2 - harga1),
-        bawahNew: (-1*(permintaan2-permintaan1))
+        bawahNew: (-1*(penawaran2-penawaran1))
     }
         const rulePembagian2 = {
-        atasNew: (((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1)))),
-        bawahNew:  (-1*(permintaan2-permintaan1))
+        atasNew: (((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1)))),
+        bawahNew:  (-1*(penawaran2-penawaran1))
     }
 
 
     // const bentukPecahan = pch2(rulePembagian)
     // const konstaPecahan = pch2(rulePembagian2)
-    // const minusHasil = jikaMinusHasil(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))
+    // const minusHasil = jikaMinusHasil(((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))
 
     // console.log("bawah last", rulePembagian.bawahLast)
     // console.log("minusHasil",minusHasil)
@@ -209,12 +209,12 @@ function tambahKoma(x) {
     
     function hitungRumus(){
 
-            if(typeof harga2 != 'undefined' && typeof permintaan1 != 'undefined' && typeof permintaan2 != 'undefined' && checkStringNumber(harga2) && checkStringNumber(permintaan1) && checkStringNumber(permintaan2)){
+            if(typeof harga2 != 'undefined' && typeof penawaran1 != 'undefined' && typeof penawaran2 != 'undefined' && checkStringNumber(harga2) && checkStringNumber(penawaran1) && checkStringNumber(penawaran2)){
                 setHitung(true)
                 setRemove(false)
                 setBentukPecahan(pch2(rulePembagian))
                 setKonstaPecahan(pch2(rulePembagian2))
-                setMinusHasil(jikaMinusHasil(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1)))))
+                setMinusHasil(jikaMinusHasil(((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1)))))
             }
              else{
                 setHitung(false) 
@@ -223,8 +223,8 @@ function tambahKoma(x) {
        
     }
     function hapusInputan() {
-        setPermintaan2(undefined)
-        setPermintaan1(undefined)
+        setPenawaran2(undefined)
+        setPenawaran1(undefined)
         setHarga2(undefined)
         setHarga1(undefined)
         setHitung(false)
@@ -239,7 +239,7 @@ function tambahKoma(x) {
     }
   return (
     <div>
-        <div className="contFungsiPermintaanHitung cont-rmsFungsi mt-5">
+        <div className="contFungsiPenawaranHitung cont-rmsFungsi mt-5">
             <h1 className='text-center text-3xl font-semibold'>Hitung Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
@@ -274,14 +274,14 @@ function tambahKoma(x) {
                                     <td><input type="text" value={harga2 || ''} onChange={(e) => setHarga2(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
-                                    <td>Qd{littleLetter(1)}</td>
+                                    <td>Qs{littleLetter(1)}</td>
                                     <td>=</td>
-                                    <td><input type="text" value={permintaan1 || ''} onChange={(e) => setPermintaan1(e.target.value)} disabled={hitung}/></td>
+                                    <td><input type="text" value={penawaran1 || ''} onChange={(e) => setPenawaran1(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                                 <tr>
-                                    <td>Qd{littleLetter(2)}</td>
+                                    <td>Qs{littleLetter(2)}</td>
                                     <td>=</td>
-                                    <td><input type="text" value={permintaan2 || ''} onChange={(e) => setPermintaan2(e.target.value)} disabled={hitung}/></td>
+                                    <td><input type="text" value={penawaran2 || ''} onChange={(e) => setPenawaran2(e.target.value)} disabled={hitung}/></td>
                                 </tr>
                         </table>
                 </div>
@@ -308,10 +308,10 @@ function tambahKoma(x) {
                                         <td className='tdSetup left' rowSpan={2}>
                                             <table>
                                                 <tr>
-                                                    <td>Qd - {tambahKoma(permintaan1*1)}</td>
+                                                    <td>Qs - {tambahKoma(penawaran1*1)}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td className='signLine2'>{tambahKoma(permintaan2*1)} - {tambahKoma(permintaan1*1)}</td>
+                                                    <td className='signLine2'>{tambahKoma(penawaran2*1)} - {tambahKoma(penawaran1*1)}</td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -336,10 +336,10 @@ function tambahKoma(x) {
                                         <td>
                                             <table>
                                                 <tr>
-                                                    <td className='signLine'>Qd - {tambahKoma(permintaan1*1)}</td>
+                                                    <td className='signLine'>Qs - {tambahKoma(penawaran1*1)}</td>
                                                 </tr>
                                                 <tr>
-                                                    <td>{tambahKoma(permintaan2-permintaan1)}</td>
+                                                    <td>{tambahKoma(penawaran2-penawaran1)}</td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -349,24 +349,24 @@ function tambahKoma(x) {
 
                                     {/* susunan rumusnya tutup */}
                                     <tr>
-                                        <td>{tambahKoma(permintaan2-permintaan1)}(P - {tambahKoma(harga1*1)})</td>
+                                        <td>{tambahKoma(penawaran2-penawaran1)}(P - {tambahKoma(harga1*1)})</td>
                                         <td>=</td>
-                                        <td>{tambahKoma(harga2 - harga1)} (Qd - {tambahKoma(permintaan1*1)})</td>
+                                        <td>{tambahKoma(harga2 - harga1)} (Qs - {tambahKoma(penawaran1*1)})</td>
                                     </tr>
                                     <tr>
-                                        <td>{tambahKoma(permintaan2-permintaan1)}P {(jikaMinus((permintaan2-permintaan1)*(-harga1)))}</td>
+                                        <td>{tambahKoma(penawaran2-penawaran1)}P {(jikaMinus((penawaran2-penawaran1)*(-harga1)))}</td>
                                         <td>=</td>
-                                        <td>{tambahKoma(harga2 - harga1)}Qd  {jikaMinus((harga2-harga1)*(-permintaan1))}</td>
+                                        <td>{tambahKoma(harga2 - harga1)}Qs  {jikaMinus((harga2-harga1)*(-penawaran1))}</td>
                                     </tr>
                                     <tr>
-                                        <td>{tambahKoma(permintaan2-permintaan1)}P</td>
+                                        <td>{tambahKoma(penawaran2-penawaran1)}P</td>
                                         <td>=</td>
-                                        <td>{tambahKoma(harga2 - harga1)}Qd {jikaMinus((harga2-harga1)*(-permintaan1))} {jikaMinus(-1*((permintaan2-permintaan1)*(-harga1)))}</td>
+                                        <td>{tambahKoma(harga2 - harga1)}Qs {jikaMinus((harga2-harga1)*(-penawaran1))} {jikaMinus(-1*((penawaran2-penawaran1)*(-harga1)))}</td>
                                     </tr>
                                     <tr>
-                                        <td>{tambahKoma(permintaan2-permintaan1)}P</td>
+                                        <td>{tambahKoma(penawaran2-penawaran1)}P</td>
                                         <td>=</td>
-                                        <td>{tambahKoma(harga2 - harga1)}Qd {jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}</td>
+                                        <td>{tambahKoma(harga2 - harga1)}Qs {jikaMinus(((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))}</td>
                                     </tr>
 
 
@@ -377,11 +377,11 @@ function tambahKoma(x) {
                                         <td>
                                             <table>
                                                 <tr>
-                                                    <td className='jawaban signLine'>{tambahKoma(harga2 - harga1)}Qd {jikaMinus(((harga2-harga1)*(-permintaan1))+(-1*((permintaan2-permintaan1)*(-harga1))))}
+                                                    <td className='jawaban signLine'>{tambahKoma(harga2 - harga1)}Qs {jikaMinus(((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colSpan={2} className='jawaban-pernya'>{tambahKoma(-1*(permintaan2-permintaan1))}</td>   
+                                                    <td colSpan={2} className='jawaban-pernya'>{tambahKoma(-1*(penawaran2-penawaran1))}</td>   
                                                 </tr>
                                             </table>
                                         </td>
@@ -399,7 +399,7 @@ function tambahKoma(x) {
                                                 <tr>
                                                     {bentukPecahan.per ? <td className='lineKonstanta'>{bentukPecahan.atas}</td> : <td>{bentukPecahan.atas}</td> }
 
-                                                    {bentukPecahan.per ? <td rowSpan="2" className='konstantaAda pl-2'>Qd</td> : <td>Qd</td>}
+                                                    {bentukPecahan.per ? <td rowSpan="2" className='konstantaAda pl-2'>Qs</td> : <td>Qs</td>}
                                                 
                                                     {bentukPecahan.per  ? <td rowSpan="2" className='konstantaAda'>{minusHasil.opt}</td> : <td>{minusHasil.opt}</td> }
 
@@ -422,7 +422,7 @@ function tambahKoma(x) {
                                     <tr>
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
-                                        <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))},0)</td>
+                                        <td>Qs = ({(-1*Konstantanya)/((harga2 - harga1)/(penawaran2-penawaran1))},0)</td>
                                     </tr>
                                 </div>
                         </table>

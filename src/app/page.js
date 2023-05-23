@@ -4,6 +4,7 @@ import RootLayout from './layout'
 import DeretHitung from './pages/ekonomi/deretHitung/DeretHitung'
 import DeretUkur from './pages/ekonomi/deretUkur/deretUkur'
 import FungsiPermintaan from './pages/ekonomi/fungsiPermintaan/fungsiPermintaan'
+import FungsiPenawaran from './pages/ekonomi/fungsiPenawaran/fungsiPenawaran'
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <DeretHitung/>
       <DeretUkur/>
       <FungsiPermintaan/>
+      <FungsiPenawaran/>
     </RootLayout>
   )
 }

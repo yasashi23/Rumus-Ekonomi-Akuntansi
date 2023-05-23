@@ -54,7 +54,7 @@ body{
 
 .deretHtg-dik tr td:nth-of-type(3) input{
     border-bottom: 1px dashed rgba(51, 51, 51, 0.488);
-    width: 50px;
+    width: 90px;
 
 }
 .deretHtg-dik tr td:nth-of-type(3) input:focus {
@@ -113,17 +113,17 @@ body{
     border-bottom:solid 2px rgb(255, 255, 255);
 }
 
-.cont-fungsiPermintaan .rumusnya table tr td, .tableJawaban tr td {
+.cont-gabFungsi .rumusnya table tr td, .tableJawaban tr td {
     @apply text-center;
 
 }
 
-.cont-fungsiPermintaan table .samaDengan {
+.cont-gabFungsi table .samaDengan {
     @apply px-3 text-center ;
 }
 
 .tableJawaban .signLine, .jawaban.signLine,
-.contFungsiPermintaanHitung .rumusJwb table tr .lineKonstanta{
+.cont-rmsFungsi .rumusJwb table tr .lineKonstanta{
     border-bottom: solid 1px black;
 }
 
@@ -137,35 +137,35 @@ body{
 
 
 
-.contFungsiPermintaanHitung .rumusJwb table tr td {
+.cont-rmsFungsi .rumusJwb table tr td {
     @apply text-center;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr td.tdSetup.right{
+.cont-rmsFungsi .rumusJwb table tr td.tdSetup.right{
 text-align: -webkit-right;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(3) {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(n+5) td:nth-last-of-type(3) {
     @apply text-right;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(n+5):nth-child(-n+8) td:nth-last-of-type(1) {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(n+5):nth-child(-n+8) td:nth-last-of-type(1) {
     @apply text-left;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(10) td:nth-last-of-type(1),
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(9) td:nth-last-of-type(1) {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(10) td:nth-last-of-type(1),
+.cont-rmsFungsi .rumusJwb table tr:nth-child(9) td:nth-last-of-type(1) {
     @apply text-center;
 }
 
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(1){
+.cont-rmsFungsi .rumusJwb table tr:nth-child(11) td:nth-child(1){
     @apply text-right align-middle;
 }
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(2) {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(11) td:nth-child(2) {
     @apply text-center align-middle;
 }
 
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td:nth-child(3),
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(12) td:nth-child(1) {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(11) td:nth-child(3),
+.cont-rmsFungsi .rumusJwb table tr:nth-child(12) td:nth-child(1) {
     @apply text-left align-middle;
 }
 
-.contFungsiPermintaanHitung .rumusJwb table tr:nth-child(11) td.konstantaAda {
+.cont-rmsFungsi .rumusJwb table tr:nth-child(11) td.konstantaAda {
     @apply align-middle;
 }
