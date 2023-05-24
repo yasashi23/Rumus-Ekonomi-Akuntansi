@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import FungsiPenawaranRumus from './fungsiPenawaranHitungRumus'
 
-export default function FungsiPenawaran() {
+export default function FungsiPenawaran({style}) {
 
 
     function littleLetter(s) {

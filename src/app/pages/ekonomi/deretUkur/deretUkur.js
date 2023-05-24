@@ -2,11 +2,11 @@
 import { useState } from 'react'
 import DeretUkurRumus from './deretUkurRumus'
 
-export default function DeretUkur() {
+export default function DeretUkur({style}) {
     const [pilihRumus,setPilihRumus] = useState(true)
 
   return (
-    <div>
+    <div style={style}>
         <div className="cont-deretUkur">
             <h1 className="text-center mb-6">Deret Ukur</h1>
             <div className="rumus flex justify-center">

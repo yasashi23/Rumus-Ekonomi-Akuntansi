@@ -2,7 +2,7 @@
 import { useState } from 'react'
 import FungsiPermintaanRumus from './fungsiPermintaanHitungRumus'
 
-export default function FungsiPermintaan() {
+export default function FungsiPermintaan({style}) {
 
 
     function littleLetter(s) {
@@ -11,8 +11,8 @@ export default function FungsiPermintaan() {
     }
 
   return (
-    <div>
-        <div className="cont-fungsiPermintaan">
+    <div style={style}>
+        <div className="cont-fungsiPermintaan cont-gabFungsi">
             <h1 className="text-center mb-6">Fungsi Permintaan</h1>
             <div className="rumus flex justify-center">
                 <div className="rumusnyaCont rumusKe1">

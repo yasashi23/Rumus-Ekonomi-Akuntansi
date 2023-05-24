@@ -201,7 +201,7 @@ function tambahKoma(x) {
   return (
     <div>
         <div className="contFungsiPermintaanHitung cont-rmsFungsi mt-5">
-            <h1 className='text-center text-xl font-semibold'>Hitung Disini</h1>
+            <h1 className='text-center text-xl font-semibold'>Hitung (fungsi permintaan) Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
                 <div className='box-warning deretHitung-warning'>
@@ -380,7 +380,7 @@ function tambahKoma(x) {
                                     <tr>
                                         <td colSpan={3} className='font-bold text-center'>Titik Grafik Kartesiusnya</td>
                                     </tr>
-                                    <tr>
+                                    <tr className='kartesius'>
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
                                         <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))},0)</td>

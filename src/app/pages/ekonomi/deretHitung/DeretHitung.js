@@ -2,10 +2,10 @@
 import { useState } from 'react'
 import DeretHitungRumus from './deretHitungRumus'
 
-export default function DeretHitung() {
+export default function DeretHitung({style}) {
 
   return (
-    <div>
+    <div style={style}>
         <div className="cont-deretHitung">
             <h1 className="text-center mb-6">Deret Hitung</h1>
             <div className="rumus flex justify-center">

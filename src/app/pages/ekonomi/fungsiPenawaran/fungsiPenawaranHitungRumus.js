@@ -194,18 +194,6 @@ function tambahKoma(x) {
         atasNew: (((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1)))),
         bawahNew:  (-1*(penawaran2-penawaran1))
     }
-
-
-    // const bentukPecahan = pch2(rulePembagian)
-    // const konstaPecahan = pch2(rulePembagian2)
-    // const minusHasil = jikaMinusHasil(((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))
-
-    // console.log("bawah last", rulePembagian.bawahLast)
-    // console.log("minusHasil",minusHasil)
-    // console.log("untuk konstanta",untukKonstanta)
-
-    // console.log("bentuk Pecahan &rule",bentukPecahan,rulePembagian)
-    // console.log("konstanta Pecahan",konstaPecahan)
     
     function hitungRumus(){
 
@@ -240,7 +228,7 @@ function tambahKoma(x) {
   return (
     <div>
         <div className="contFungsiPenawaranHitung cont-rmsFungsi mt-5">
-            <h1 className='text-center text-xl font-semibold'>Hitung Disini</h1>
+            <h1 className='text-center text-xl font-semibold'>Hitung (fungsi penawaran) Disini</h1>
 
             <div className={`contBoxWarning ${moduleHidden ? 'flex' : 'hidden'}`}>
                 <div className='box-warning deretHitung-warning'>
@@ -419,7 +407,7 @@ function tambahKoma(x) {
                                     <tr>
                                         <td colSpan={3} className='font-bold text-center'>Titik Grafik Kartesiusnya</td>
                                     </tr>
-                                    <tr>
+                                    <tr className='kartesius'>
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
                                         <td>Qs = ({(-1*Konstantanya)/((harga2 - harga1)/(penawaran2-penawaran1))},0)</td>
