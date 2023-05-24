@@ -13,7 +13,7 @@ function FungsiPenawaranRumus() {
     const [bentukPecahan,setBentukPecahan] = useState({})
     const [konstaPecahan,setKonstaPecahan] = useState({})
     const [minusHasil,setMinusHasil] =useState({})
-    
+
     const Konstantanya = (((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))/(penawaran2-penawaran1)
 
     
@@ -85,9 +85,10 @@ function tambahKoma(x) {
             }
 
         }
+
     //     function pch2(num) {
-    //       const atas = (num.atasNew < 0 ? (num.atasNew*-1) : num.atasNew)
-    //       const bawah = (num.bawahNew < 0 ? (num.bawahNew*-1) : num.bawahNew)
+    //       const atas = Math.abs(num.atasNew)
+    //       const bawah = Math.abs(num.bawahNew)
     //       const atasReal = num.atasNew
     //       const bawahReal = num.bawahNew
 
@@ -96,34 +97,33 @@ function tambahKoma(x) {
     //         const checkSisaBawah = (bawah%atas === 0)
     //         if(atas > bawah) {
     //             if(checkSisaAtas){
-    //                 const mauY = {atas:(atasReal/bawah),per:false,baris:'52'}
+    //                 const mauY = {atas:(atasReal/bawah),per:false,baris:'52',atasP:Math.abs((atasReal/bawah))}
     //                 return mauY
     //             }else{
-    //                 const hsl = atas%bawah
-    //                 const selisih = bawah-(1*(hsl))
-    //                 const mauY={atas:(atasReal/hsl),bawah:(bawahReal/hsl),per:true,baris:'57',selisih,hsl,bawahr:bawah}
+    //                 const hsl = rubahKePecahan(num)
+    //                 const mauY={atas:hsl.atas,bawah:hsl.bawah,per:true,baris:'57',atasP:Math.abs((atasReal/bawah))}
     //                 return mauY
-    //                 // return `${atas/selisih}/${bawah/selisih}`
     //             }
     //         }
     //         else {
     //             if(checkSisaBawah) {
-    //                 const mauY={atas:(atasReal/atasReal),bawah:(bawahReal/atasReal),per:true,baris:'64'}
+    //                 const mauY={atas:(atasReal/atasReal),bawah:(bawahReal/atasReal),per:true,baris:'64',atasP:Math.abs((atasReal/bawah))}
     //                 return mauY
     //             }else {
-    //                 const hsl = bawah%atas
-    //                 const selisih = atas-(1*(hsl))
-    //                 const mauY={atas:(atasReal/hsl),bawah:(bawahReal/hsl),per:true,baris:'69'}
+    //                 const hsl = rubahKePecahan(num)
+    //                 const mauY={atas:hsl.atas,bawah: hsl.bawah ,per:true,baris:'69',atasP:Math.abs((atasReal/bawah))}
     //                 return mauY
     //             }
     //         }
     //     }else {
-    //         const mauY={atas,bawah,per:true,baris:'74'}
+    //         const hsl = rubahKePecahan(num)
+    //         const mauY={atas:hsl.atas,bawah: hsl.bawah,per:true,baris:'74',atasP:Math.abs((atasReal/bawah))}
     //         return mauY
     //     }
 
     // }
-        function pch2(num) {
+
+            function pch2(num) {
           const atas = Math.abs(num.atasNew)
           const bawah = Math.abs(num.bawahNew)
           const atasReal = num.atasNew
@@ -134,27 +134,27 @@ function tambahKoma(x) {
             const checkSisaBawah = (bawah%atas === 0)
             if(atas > bawah) {
                 if(checkSisaAtas){
-                    const mauY = {atas:(atasReal/bawah),per:false,baris:'52',atasP:Math.abs((atasReal/bawah))}
+                    const mauY = {atas:(atasReal/bawah),per:false,baris:'52',atasP:Math.abs((atasReal/bawah)),atM:Math.abs((atasReal/bawah))}
                     return mauY
                 }else{
                     const hsl = rubahKePecahan(num)
-                    const mauY={atas:hsl.atas,bawah:hsl.bawah,per:true,baris:'57',atasP:Math.abs((atasReal/bawah))}
+                    const mauY={atas:hsl.atas,bawah:hsl.bawah,per:true,baris:'57',atasP:Math.abs((atasReal/bawah)),atM:Math.abs(hsl.atas)}
                     return mauY
                 }
             }
             else {
                 if(checkSisaBawah) {
-                    const mauY={atas:(atasReal/atasReal),bawah:(bawahReal/atasReal),per:true,baris:'64',atasP:Math.abs((atasReal/bawah))}
+                    const mauY={atas:(atasReal/atasReal),bawah:(bawahReal/atasReal),per:true,baris:'64',atasP:Math.abs((atasReal/bawah)),atM:Math.abs((atasReal/atasReal))}
                     return mauY
                 }else {
                     const hsl = rubahKePecahan(num)
-                    const mauY={atas:hsl.atas,bawah: hsl.bawah ,per:true,baris:'69',atasP:Math.abs((atasReal/bawah))}
+                    const mauY={atas:hsl.atas,bawah: hsl.bawah ,per:true,baris:'69',atasP:Math.abs((atasReal/bawah)),atM:Math.abs(hsl.atas)}
                     return mauY
                 }
             }
         }else {
             const hsl = rubahKePecahan(num)
-            const mauY={atas:hsl.atas,bawah: hsl.bawah,per:true,baris:'74',atasP:Math.abs((atasReal/bawah))}
+            const mauY={atas:hsl.atas,bawah: hsl.bawah,per:true,baris:'74',atasP:Math.abs((atasReal/bawah)),atM:Math.abs(hsl.atas)}
             return mauY
         }
 
@@ -388,11 +388,11 @@ function tambahKoma(x) {
                                                 
                                                     {bentukPecahan.per  ? <td rowSpan="2" className='konstantaAda'>{minusHasil.opt}</td> : <td>{minusHasil.opt}</td> }
 
-                                                    {untukKonstanta.per ? <td className='konstantaAda'>{tambahKoma(konstaPecahan.atasP)}</td> : <td className='konstantaAda' rowSpan={2}>{tambahKoma(konstaPecahan.atasP)}</td>}
+                                                    {konstaPecahan.per ? <td className='konstantaAda lineKonstanta'>{tambahKoma(konstaPecahan.atM)}</td> : <td className='konstantaAda' rowSpan={2}>{tambahKoma(konstaPecahan.atasP)}</td>}
                                                 </tr>
                                                 <tr>
                                                     {bentukPecahan.per ? <td>{tambahKoma(bentukPecahan.bawah)}</td> : ''}
-                                                    {untukKonstanta.per ? <td>{tambahKoma(konstaPecahan.bawah)}</td> : ''}
+                                                    {konstaPecahan.per ? <td>{tambahKoma(konstaPecahan.bawah)}</td> : ''}
                                                 </tr>
                                             </table>
                                         </td>

@@ -30,7 +30,7 @@ function DeretUkurRumus() {
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
     const rasio1Atau2 = (pilihRasio === 'r>1')
 
-    console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
+    
     // check if string there is no numbe 
     function checkStringNumber(s){
         const result = /^[0-9.]+$/.test(s)
@@ -40,15 +40,15 @@ function DeretUkurRumus() {
 
             if(typeof sukuPertama != 'undefined' && typeof rasio != 'undefined' && typeof indexSuku != 'undefined' && checkStringNumber(sukuPertama) && checkStringNumber(rasio) && checkStringNumber(indexSuku)){
                 setHitung(true)
-                console.log('hitung')
-                console.log(Number.isNaN(rasio))
+                
+                
                 setRemove(false)
             }
              else{
                 setHitung(false) 
                 setModuleHidden(true)
-                console.log(typeof indexSuku)
-                console.log('else hitung')
+                
+                
             }
        
     }
@@ -63,7 +63,7 @@ function DeretUkurRumus() {
     function closeModule() {
         setModuleHidden(false)
     }
-    console.log(indexSuku)
+    
   return (
     <div>
         <div className="contHitung mt-5">

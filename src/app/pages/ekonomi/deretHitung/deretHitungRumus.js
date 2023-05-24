@@ -11,8 +11,8 @@ function DeretHitungRumus() {
     const [remove,setRemove] = useState(false)
     const [moduleHidden, setModuleHidden] = useState(false)
     const [pilihRumus, setPilihRumus] = useState('rumus1')
-    console.log(typeof sukuPertama != 'string' && typeof pembeda != 'string' && typeof indexSuku != 'string' )
-    console.log(typeof sukuPertama)
+    
+    
 
     const rumus2Tambahan = (<tr>
                                 <td>S<span>{indexSuku}</span></td>
@@ -22,7 +22,7 @@ function DeretHitungRumus() {
     
     const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
 
-    console.log('pilih rumusnya adalah : ',pilihRumus1Atau2)
+    
     // check if string there is no numbe 
     function checkStringNumber(s){
         const result = /^[-0-9.]+$/.test(s)
@@ -33,15 +33,15 @@ function DeretHitungRumus() {
 
             if(typeof sukuPertama != 'undefined' && typeof pembeda != 'undefined' && typeof indexSuku != 'undefined' && checkStringNumber(sukuPertama) && checkStringNumber(pembeda) && checkStringNumber(indexSuku)){
                 setHitung(true)
-                console.log('hitung')
-                console.log(Number.isNaN(pembeda))
+                
+                
                 setRemove(false)
             }
              else{
                 setHitung(false) 
                 setModuleHidden(true)
-                console.log(typeof indexSuku)
-                console.log('else hitung')
+                
+                
             }
        
     }
@@ -56,7 +56,7 @@ function DeretHitungRumus() {
     function closeModule() {
         setModuleHidden(false)
     }
-    console.log(indexSuku)
+    
   return (
     <div>
         <div className="contHitung mt-5">

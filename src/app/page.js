@@ -16,15 +16,16 @@ export default function Home() {
     height: '100%',
     margin: '0px 0px 20vh 0px'
   }
-  const root = {
+  const foot= {
+    margin: '30px 0px 60px 0px'
   }
   return (
-    <RootLayout style={root}>
+    <RootLayout>
       <DeretHitung style={DrtH}/>
       <DeretUkur style={heightStyle}/>
       <FungsiPermintaan style={heightStyle}/>
       <FungsiPenawaran style={heightStyle}/>
-      <Powered/>
+      <Powered style={foot}/>
     </RootLayout>
   )
 }
