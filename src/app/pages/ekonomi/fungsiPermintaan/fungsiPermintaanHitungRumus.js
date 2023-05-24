@@ -374,7 +374,7 @@ function tambahKoma(x) {
                                     <tr className='kartesius'>
                                         <td>P = (0 , {Konstantanya})</td>
                                         <td></td>
-                                        <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))},0)</td>
+                                        <td>Qd = ({(-1*Konstantanya)/((harga2 - harga1)/(permintaan2-permintaan1))} , 0)</td>
                                     </tr>
                                 </div>
                         </table>
