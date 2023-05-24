@@ -1,7 +1,8 @@
 "use client"
+import dynamic from "next/dynamic";
 import React, { useState } from 'react'
 
-export default function DeretHitungRumus() {
+function DeretHitungRumus() {
     const [Sn, setSn] = useState('?')
     const [sukuPertama, setSukuPertama] = useState()
     const [pembeda, setPembeda] = useState()
@@ -155,3 +156,5 @@ export default function DeretHitungRumus() {
     </div>
   )
 }
+
+export default dynamic (() => Promise.resolve(DeretHitungRumus), {ssr: false})

@@ -1,8 +1,9 @@
 "use client"
-import { useState } from 'react'
 import DeretHitungRumus from './deretHitungRumus'
+import dynamic from "next/dynamic";
 
-export default function DeretHitung({style}) {
+
+function DeretHitung({style}) {
 
   return (
     <div style={style}>
@@ -51,26 +52,28 @@ export default function DeretHitung({style}) {
                         <p>Keterangan :</p>
                         <div className="isiKeterangan">
                             <table>
-                                <tr>
-                                    <td>Sn</td>
-                                    <td>=</td>
-                                    <td>Jumlah hingga suku ke n</td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                    <td>=</td>
-                                    <td>suku pertama</td>
-                                </tr>
-                                <tr>
-                                    <td>b</td>
-                                    <td>=</td>
-                                    <td>Pembeda</td>
-                                </tr>
-                                <tr>
-                                    <td>n</td>
-                                    <td>=</td>
-                                    <td>indeks suku ke n</td>
-                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>Sn</td>
+                                        <td>=</td>
+                                        <td>Jumlah hingga suku ke n</td>
+                                    </tr>
+                                    <tr>
+                                        <td>a</td>
+                                        <td>=</td>
+                                        <td>suku pertama</td>
+                                    </tr>
+                                    <tr>
+                                        <td>b</td>
+                                        <td>=</td>
+                                        <td>Pembeda</td>
+                                    </tr>
+                                    <tr>
+                                        <td>n</td>
+                                        <td>=</td>
+                                        <td>indeks suku ke n</td>
+                                    </tr>
+                                </tbody>
                             </table>
                         </div>
                     </div>
@@ -83,3 +86,4 @@ export default function DeretHitung({style}) {
     </div>
   )
 }
+export default dynamic (() => Promise.resolve(DeretHitung), {ssr: false})

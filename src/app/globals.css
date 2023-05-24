@@ -9,21 +9,21 @@ body{
     background-color: #FFFFFF;
 }
 
-/* navigasi */
-nav {
+/* .navigasi */
+.nav {
     width: 100%;
     top: 15px;
     z-index: 99;
     @apply fixed flex justify-center;
 }
-nav div {
+.nav nav {
     border-radius: 15px;
     background: #253982;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 10px;
     @apply flex justify-center items-center;
 }
 
-nav div img {
+.nav nav img {
     padding: 12px 60px 15px 60px;
     height: 80px;
     width: auto;
@@ -159,7 +159,6 @@ font-size: 18px;
 }
 .keterangan-deretHtg {
     color: var(--brand);
-    opacity: .7;
 }
 
 
@@ -250,7 +249,7 @@ text-align: -webkit-right;
     @apply items-center;
 }
 .kartesius {
-@apply flex flex-col items-start;
+@apply flex flex-col items-center;
 
 }
 

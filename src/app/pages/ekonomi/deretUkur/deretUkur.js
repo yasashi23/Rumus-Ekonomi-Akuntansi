@@ -1,8 +1,9 @@
 "use client"
 import { useState } from 'react'
 import DeretUkurRumus from './deretUkurRumus'
+import dynamic from "next/dynamic";
 
-export default function DeretUkur({style}) {
+function DeretUkur({style}) {
     const [pilihRumus,setPilihRumus] = useState(true)
 
   return (
@@ -92,3 +93,4 @@ export default function DeretUkur({style}) {
     </div>
   )
 }
+export default dynamic (() => Promise.resolve(DeretUkur), {ssr: false})

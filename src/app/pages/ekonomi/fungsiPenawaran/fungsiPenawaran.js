@@ -1,8 +1,9 @@
 "use client"
 import { useState } from 'react'
 import FungsiPenawaranRumus from './fungsiPenawaranHitungRumus'
+import dynamic from "next/dynamic";
 
-export default function FungsiPenawaran({style}) {
+function FungsiPenawaran({style}) {
 
 
     function littleLetter(s) {
@@ -56,3 +57,4 @@ export default function FungsiPenawaran({style}) {
     </div>
   )
 }
+export default dynamic (() => Promise.resolve(FungsiPenawaran), {ssr: false})

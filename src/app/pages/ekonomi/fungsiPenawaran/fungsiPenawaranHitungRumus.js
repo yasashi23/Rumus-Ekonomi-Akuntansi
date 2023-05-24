@@ -1,7 +1,8 @@
 "use client"
 import React, { useState } from 'react'
+import dynamic from "next/dynamic";
 
-export default function FungsiPenawaranRumus() {
+function FungsiPenawaranRumus() {
     const [harga1, setHarga1] = useState()
     const [harga2, setHarga2] = useState()
     const [penawaran1, setPenawaran1] = useState()
@@ -12,11 +13,7 @@ export default function FungsiPenawaranRumus() {
     const [bentukPecahan,setBentukPecahan] = useState({})
     const [konstaPecahan,setKonstaPecahan] = useState({})
     const [minusHasil,setMinusHasil] =useState({})
-    const [pilihRumus, setPilihRumus] = useState('rumus1')
-
-
     
-    const pilihRumus1Atau2 = (pilihRumus === 'rumus1')
     const Konstantanya = (((harga2-harga1)*(-penawaran1))+(-1*((penawaran2-penawaran1)*(-harga1))))/(penawaran2-penawaran1)
 
     
@@ -426,3 +423,4 @@ function tambahKoma(x) {
     </div>
   )
 }
+export default dynamic (() => Promise.resolve(FungsiPenawaranRumus), {ssr: false})

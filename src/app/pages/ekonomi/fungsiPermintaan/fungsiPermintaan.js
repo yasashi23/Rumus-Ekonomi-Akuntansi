@@ -1,8 +1,10 @@
 "use client"
 import { useState } from 'react'
-import FungsiPermintaanRumus from './fungsiPermintaanHitungRumus'
+import FungsiPermintaanRumus from './fungsiPermintaanHitungRumus';
 
-export default function FungsiPermintaan({style}) {
+import dynamic from "next/dynamic";
+
+function FungsiPermintaan({style}) {
 
 
     function littleLetter(s) {
@@ -56,3 +58,4 @@ export default function FungsiPermintaan({style}) {
     </div>
   )
 }
+export default dynamic (() => Promise.resolve(FungsiPermintaan), {ssr: false})
