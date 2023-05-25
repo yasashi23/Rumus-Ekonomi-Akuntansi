@@ -6,6 +6,7 @@ import DeretUkur from './pages/ekonomi/deretUkur/deretUkur'
 import FungsiPermintaan from './pages/ekonomi/fungsiPermintaan/fungsiPermintaan'
 import FungsiPenawaran from './pages/ekonomi/fungsiPenawaran/fungsiPenawaran'
 import Powered from './pages/powered'
+import FungsiTurunan from './pages/fungsiTurunan/fungsiTurunan'
 
 export default function Home() {
   const DrtH = {
@@ -25,6 +26,7 @@ export default function Home() {
       <DeretUkur style={heightStyle}/>
       <FungsiPermintaan style={heightStyle}/>
       <FungsiPenawaran style={heightStyle}/>
+      <FungsiTurunan/>
       <Powered style={foot}/>
     </RootLayout>
   )

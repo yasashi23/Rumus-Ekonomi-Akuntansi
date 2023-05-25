@@ -238,7 +238,7 @@ function tambahKoma(x) {
             </div>
 
             <div className="input-deretHtg flex justify-center items-center flex-col">
-            <p className='keterangan-deretHtg text-center text-sm mb-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
+            <p className='keterangan-deretHtg text-center text-sm my-4'>Masukkan nilai diketahui dan <br/>kosongkan jika nilai tsb ditanyakan</p>
             </div>
             <div className="rumusDanJawabannya flex justify-center items-top gap-6">
                 <div className="deretHtg-dik flex justify-top flex-col items-center ">

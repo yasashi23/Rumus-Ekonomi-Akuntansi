@@ -2,15 +2,23 @@
 import { useState } from 'react'
 import DeretUkurRumus from './deretUkurRumus'
 import dynamic from "next/dynamic";
+import DropDown from '../../componentTambahan/dropDown';
 
 function DeretUkur({style}) {
     const [pilihRumus,setPilihRumus] = useState(true)
+    const [aktif, setAktif] = useState(false)
+
+    function aktifkan() {
+        setAktif(!aktif)
+    }
+
 
   return (
     <div style={style}>
         <div className="cont-deretUkur">
             <h1 className="text-center mb-6">Deret Ukur</h1>
-            <div className="rumus flex justify-center">
+            <DropDown func={aktifkan} val={aktif}/>
+            <div className={`rumus flex justify-center penjelasanRumusDeretUkur ${aktif ? 'on' : ''}`}>
                 <div className="rumusnyaCont rumusKe1 rumusDeretUkur">
                     <h1>Rumus 1</h1>
                     <div className="rumusnya flex">

@@ -3,9 +3,15 @@ import { useState } from 'react'
 import FungsiPermintaanRumus from './fungsiPermintaanHitungRumus';
 
 import dynamic from "next/dynamic";
+import DropDown from '../../componentTambahan/dropDown';
 
 function FungsiPermintaan({style}) {
 
+    const [aktif, setAktif] = useState(false)
+
+    function aktifkan() {
+        setAktif(!aktif)
+    }
 
     function littleLetter(s) {
         const hslnya =(<span className='text-base'>{s}</span>)
@@ -16,7 +22,8 @@ function FungsiPermintaan({style}) {
     <div style={style}>
         <div className="cont-fungsiPermintaan cont-gabFungsi">
             <h1 className="text-center mb-6">Fungsi Permintaan</h1>
-            <div className="rumus flex justify-center">
+            <DropDown func={aktifkan} val={aktif}/>
+            <div className={`rumus flex justify-center penjelasanRumusPermintaan ${aktif ? 'on' : ''}`}>
                 <div className="rumusnyaCont rumusKe1">
                     <h1>Rumus</h1>
                     <div className="rumusnya">

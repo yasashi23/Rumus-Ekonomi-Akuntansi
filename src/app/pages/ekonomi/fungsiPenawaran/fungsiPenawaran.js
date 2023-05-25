@@ -2,9 +2,15 @@
 import { useState } from 'react'
 import FungsiPenawaranRumus from './fungsiPenawaranHitungRumus'
 import dynamic from "next/dynamic";
+import DropDown from '../../componentTambahan/dropDown';
 
 function FungsiPenawaran({style}) {
 
+    const [aktif, setAktif] = useState(false)
+
+    function aktifkan() {
+        setAktif(!aktif)
+    }
 
     function littleLetter(s) {
         const hslnya =(<span className='text-base'>{s}</span>)
@@ -15,7 +21,8 @@ function FungsiPenawaran({style}) {
     <div>
         <div className="cont-gabFungsi">
             <h1 className="text-center mb-6">Fungsi Penawaran</h1>
-            <div className="rumus flex justify-center">
+            <DropDown func={aktifkan} val={aktif}/>
+            <div className={`rumus flex justify-center penjelasanRumusPenawaran ${aktif ? 'on' : ''}`}>
                 <div className="rumusnyaCont rumusKe1">
                     <h1>Rumus</h1>
                     <div className="rumusnya">

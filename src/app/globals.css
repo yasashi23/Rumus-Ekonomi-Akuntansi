@@ -84,6 +84,46 @@ footer {
     height: 30px;
 }
 
+.cont-deretHitung {
+    overflow: hidden;
+    /* height: 20px; */
+}
+.penjelasan {
+    cursor: pointer;
+}
+.dropDown {
+    opacity: .7;
+}
+.penjelasan:active {
+    color: red;
+}
+.penjelasanRumus,
+.penjelasanRumusDeretUkur,
+.penjelasanRumusPermintaan,
+.penjelasanRumusPenawaran {
+    overflow: hidden;
+    height: 0px;
+    transition: 1s;
+}
+.penjelasanRumus.on,
+.penjelasanRumusDeretUkur.on,
+.penjelasanRumusPermintaan.on,
+.penjelasanRumusPenawaran.on
+{
+        transition: 1s;
+}
+
+.penjelasanRumus.on{
+    height: 260px;
+}
+.penjelasanRumusDeretUkur.on {
+    height: 286px;
+}
+.penjelasanRumusPermintaan.on,
+.penjelasanRumusPenawaran.on {
+    height: 238px;
+}
+
 .cont-deretHitung > h1,
 .cont-deretUkur > h1,
 .cont-gabFungsi > h1 {
@@ -131,6 +171,7 @@ font-size: 18px;
     width: 100%;
     height: 100vh;
     background-color: rgba(215, 11, 11, 0.147);
+    z-index: 80;
     @apply fixed top-0 left-0 items-center justify-center;
 }
 
@@ -251,6 +292,13 @@ text-align: -webkit-right;
 .kartesius {
 @apply flex flex-col items-center;
 
+}
+.penjelasanRumus.on {
+    height: 540px;
+}
+
+.penjelasanRumusDeretUkur.on {
+    height: 566px;
 }
 
 }

@@ -1,15 +1,24 @@
 "use client"
 import DeretHitungRumus from './deretHitungRumus'
 import dynamic from "next/dynamic";
+import { useState } from 'react';
+import DropDown from '../../componentTambahan/dropDown';
 
 
 function DeretHitung({style}) {
+    const [aktif, setAktif] = useState(false)
+
+    function aktifkan() {
+        setAktif(!aktif)
+    }
+
 
   return (
     <div style={style}>
         <div className="cont-deretHitung">
             <h1 className="text-center mb-6">Deret Hitung</h1>
-            <div className="rumus flex justify-center">
+                <DropDown func={aktifkan} val={aktif}/>
+            <div className={`rumus flex justify-center penjelasanRumus ${aktif ? 'on' : ''}`}>
                 <div className="rumusnyaCont rumusKe1">
                     <h1 className="deretHitung ">Rumus 1</h1>
                     <div className="rumusnya">
